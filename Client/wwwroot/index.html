@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pilot LogBook</title>
+    <script src="js/auth.js"></script> <!-- Include the authentication check -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,3 +36,15 @@
     <a href="create.html">Create a New LogBook</a>
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            // Redirect to the login page if no token is found
+            alert('You need to log in to access this page.');
+            window.location.href = "landing.html";
+        }
+    });
+</script>

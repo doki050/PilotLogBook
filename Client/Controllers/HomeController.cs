@@ -8,7 +8,7 @@ namespace Client.Controllers
         [HttpGet("/")]
         public IActionResult Index()
         {
-            var html = System.IO.File.ReadAllText("wwwroot/index.html");
+            var html = System.IO.File.ReadAllText("wwwroot/landing.html");
             return Content(html, "text/html");
         }
     }

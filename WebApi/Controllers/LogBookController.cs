@@ -1,12 +1,14 @@
 ﻿using Domain.Model.PilotDocuments;
 using Domain.UseCases.LogBooks;
 using Domain.UseCases.Messaging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using WebApi.RequestDtos;
 
 namespace WebApi.Controllers;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 [Produces(MediaTypeNames.Application.Json)]

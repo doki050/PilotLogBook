@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create LogBook</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/auth.js"></script> <!-- Include the authentication check -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -107,6 +108,14 @@
 
     <script>
         $(document).ready(function () {
+            // Ensure the user is authenticated
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('You need to log in to access this page.');
+                window.location.href = 'landing.html';
+                return;
+            }
+
             $('#logbookForm').submit(function (event) {
                 event.preventDefault();
 
@@ -135,6 +144,9 @@
                     url: 'https://localhost:5000/api/logbook', // Adjust the API URL
                     type: 'POST',
                     contentType: 'application/json',
+                    headers: {
+                        'Authorization': 'Bearer ' + token // Include the JWT token
+                    },
                     data: JSON.stringify(logbookData),
                     success: function (response) {
                         alert('LogBook entry created successfully!');

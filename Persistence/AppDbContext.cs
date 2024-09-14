@@ -1,10 +1,12 @@
 ﻿using Domain.Model.PilotDocuments;
 using Domain.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Auth.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Persistence;
 
-public class AppDbContext : DbContext, IUnitOfWork
+public class AppDbContext : IdentityDbContext<ApplicationUser>, IUnitOfWork
 {
     public DbSet<LogBook> LogBooks { get; set; }
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All LogBooks</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/auth.js"></script> <!-- Include the authentication check -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -46,9 +47,9 @@
             color: #007BFF;
         }
 
-        a:hover {
-            text-decoration: underline;
-        }
+            a:hover {
+                text-decoration: underline;
+            }
     </style>
 </head>
 <body>
@@ -82,10 +83,23 @@
 
     <script>
         $(document).ready(function () {
+            // Get the token from localStorage
+            const token = localStorage.getItem('token');
+
+            if (!token) {
+                // If no token, redirect to login page
+                alert('You need to log in to view logbook entries.');
+                window.location.href = "landing.html";
+                return;
+            }
+
             // Fetch all LogBooks using an AJAX GET request
             $.ajax({
                 url: 'https://localhost:5000/api/logbook', // Adjust to match your API URL
                 type: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token  // Include the token in the Authorization header
+                },
                 success: function (response) {
                     let logbookTableBody = '';
 
@@ -94,26 +108,26 @@
                     // Loop through the logbooks and create rows for each logbook
                     logbooks.forEach(function (logbook) {
                         logbookTableBody += `
-                            <tr>
-                                <td>${logbook.date}</td>
-                                <td>${logbook.departure}</td>
-                                <td>${logbook.departureTime}</td>
-                                <td>${logbook.arrival}</td>
-                                <td>${logbook.arrivalTime}</td>
-                                <td>${logbook.airplaneType}</td>
-                                <td>${logbook.callSign}</td>
-                                <td>${logbook.totalFlightTime}</td>
-                                <td>${logbook.pilotName}</td>
-                                <td>${logbook.vfrTakeoff}</td>
-                                <td>${logbook.vfrLanding}</td>
-                                <td>${logbook.nightTakeoff}</td>
-                                <td>${logbook.nightLanding}</td>
-                                <td>${logbook.picTime}</td>
-                                <td>${logbook.dualTime}</td>
-                                <td>${logbook.instructorTime}</td>
-                                <td>${logbook.description}</td>
-                            </tr>
-                        `;
+                                    <tr>
+                                        <td>${logbook.date}</td>
+                                        <td>${logbook.departure}</td>
+                                        <td>${logbook.departureTime}</td>
+                                        <td>${logbook.arrival}</td>
+                                        <td>${logbook.arrivalTime}</td>
+                                        <td>${logbook.airplaneType}</td>
+                                        <td>${logbook.callSign}</td>
+                                        <td>${logbook.totalFlightTime}</td>
+                                        <td>${logbook.pilotName}</td>
+                                        <td>${logbook.vfrTakeoff}</td>
+                                        <td>${logbook.vfrLanding}</td>
+                                        <td>${logbook.nightTakeoff}</td>
+                                        <td>${logbook.nightLanding}</td>
+                                        <td>${logbook.picTime}</td>
+                                        <td>${logbook.dualTime}</td>
+                                        <td>${logbook.instructorTime}</td>
+                                        <td>${logbook.description}</td>
+                                    </tr>
+                                `;
                     });
 
                     // Append the rows to the table body
