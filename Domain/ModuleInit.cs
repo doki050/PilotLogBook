@@ -2,15 +2,13 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using System.Text;
 
 namespace Domain;
 
 public static class ModuleInit
 {
     public static IServiceCollection AddPilotLogBookDomain(
-        this IServiceCollection services,
-        IConfigurationSection domainSettings
+        this IServiceCollection services
     )
     {
         return services

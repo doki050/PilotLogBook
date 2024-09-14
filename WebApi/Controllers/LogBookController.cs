@@ -2,13 +2,13 @@
 using Domain.UseCases.LogBooks;
 using Domain.UseCases.Messaging;
 using Microsoft.AspNetCore.Mvc;
-
-using CreateLogBookDto = Domain.UseCases.LogBooks.CreateLogBook.Dto;
+using System.Net.Mime;
 
 namespace WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Produces(MediaTypeNames.Application.Json)]
 public class LogBookController : ControllerBase
 {
     private readonly IServiceProvider _serviceProvider;
@@ -19,8 +19,9 @@ public class LogBookController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType<Envelope<LogBook>>(StatusCodes.Status201Created)]
     public async Task<IActionResult> Create(
-        [FromBody] CreateLogBookDto dto,
+        [FromBody] CreateLogBook.Dto dto,
         CancellationToken cancellationToken
     )
     {
@@ -28,6 +29,6 @@ public class LogBookController : ControllerBase
             .GetRequiredService<CreateLogBook>()
             .RunAsync(dto, cancellationToken);
 
-        return Created(uri: string.Empty, new Envelope<LogBook>(created));
+        return Created(uri: (string)null, new Envelope<LogBook>(created));
     }
 }
