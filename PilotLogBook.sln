@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{E76E91BC-8E63-4AF6-9403-14AD6A5DC123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{23248783-39B3-4045-8998-7079336E82A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{D2B96255-8431-4A1D-A60A-B7A028EE2077}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E76E91BC-8E63-4AF6-9403-14AD6A5DC123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E76E91BC-8E63-4AF6-9403-14AD6A5DC123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E76E91BC-8E63-4AF6-9403-14AD6A5DC123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E76E91BC-8E63-4AF6-9403-14AD6A5DC123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23248783-39B3-4045-8998-7079336E82A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23248783-39B3-4045-8998-7079336E82A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23248783-39B3-4045-8998-7079336E82A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23248783-39B3-4045-8998-7079336E82A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2B96255-8431-4A1D-A60A-B7A028EE2077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B96255-8431-4A1D-A60A-B7A028EE2077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B96255-8431-4A1D-A60A-B7A028EE2077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B96255-8431-4A1D-A60A-B7A028EE2077}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CECD585D-D2BC-4A05-AD2A-B32E22C544EB}
+	EndGlobalSection
+EndGlobal
