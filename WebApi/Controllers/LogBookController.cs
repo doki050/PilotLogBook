@@ -11,11 +11,45 @@ namespace WebApi.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class LogBookController : ControllerBase
 {
-    private readonly IServiceProvider _serviceProvider;
+    private readonly IServiceProvider _services;
 
     public LogBookController(IServiceProvider serviceProvider)
     {
-        _serviceProvider = serviceProvider;
+        _services = serviceProvider;
+    }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType<Envelope<LogBook>>(StatusCodes.Status200OK)]
+
+    public async Task<IActionResult> Get(
+        int id,
+        CancellationToken cancellationToken
+    )
+    {
+        var result = await _services
+            .GetRequiredService<GetLogBook>()
+            .RunAsync(id, cancellationToken);
+
+        return Ok(new Envelope<LogBook>(result));
+    }
+
+    [HttpGet]
+    [ProducesResponseType<PagedEnvelope<LogBook>>(StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAll(
+        [FromQuery] PageRequestQueryParam pageRequestParam,
+        CancellationToken cancellationToken
+    )
+    {
+        pageRequestParam.ThrowIfInvalid(pageRequestParam);
+
+        var result = await _services
+            .GetRequiredService<GetLogBooks>()
+            .RunAsync(
+                pageRequestParam.ToDomainObject(),
+                cancellationToken
+            );
+
+        return Ok(result);
     }
 
     [HttpPost]
@@ -25,7 +59,7 @@ public class LogBookController : ControllerBase
         CancellationToken cancellationToken
     )
     {
-        var created = await _serviceProvider
+        var created = await _services
             .GetRequiredService<CreateLogBook>()
             .RunAsync(dto, cancellationToken);
 

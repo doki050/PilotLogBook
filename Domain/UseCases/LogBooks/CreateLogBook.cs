@@ -13,8 +13,8 @@ public partial class CreateLogBook(
     public async Task<LogBook> RunAsync(Dto dto, CancellationToken cancellationToken)
     {
         var logBook = mapper.Map<LogBook>(dto);
-        var model = repository.Add(logBook);
 
+        var model = repository.Add(logBook);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return model;

@@ -14,6 +14,8 @@ public static class ModuleInit
         return services
             .AddAutoMapper([Assembly.GetExecutingAssembly()], ServiceLifetime.Singleton)
             .AddScoped<CreateLogBook>()
+            .AddScoped<GetLogBook>()
+            .AddScoped<GetLogBooks>()
             ;
     }
 }
