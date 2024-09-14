@@ -14,6 +14,14 @@ namespace WebApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
+            });
+
             builder.Services.AddPilotLogBookDomain();
 
             builder.Services.AddDbContext<AppDbContext>(
@@ -41,6 +49,7 @@ namespace WebApi
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("AllowAllOrigins");
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
