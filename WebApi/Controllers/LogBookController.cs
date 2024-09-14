@@ -3,6 +3,7 @@ using Domain.UseCases.LogBooks;
 using Domain.UseCases.Messaging;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
+using WebApi.RequestDtos;
 
 namespace WebApi.Controllers;
 
@@ -63,7 +64,7 @@ public class LogBookController : ControllerBase
             .GetRequiredService<CreateLogBook>()
             .RunAsync(dto, cancellationToken);
 
-        return Created(uri: (string)null, new Envelope<LogBook>(created));
+        return Created(uri: null as string, new Envelope<LogBook>(created));
     }
 
     [HttpPut("{id}")]

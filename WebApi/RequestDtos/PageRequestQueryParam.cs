@@ -2,7 +2,7 @@
 using Domain.UseCases.Messaging;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi;
+namespace WebApi.RequestDtos;
 
 public class PageRequestQueryParam
 {

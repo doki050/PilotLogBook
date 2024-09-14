@@ -18,8 +18,4 @@ public class PagedEnvelope<T> : Envelope<IEnumerable<T>>
     {
         this.Paging = paging;
     }
-
-    // For deserialization in API tests
-    public PagedEnvelope() : base(null)
-    { }
 }
