@@ -54,7 +54,7 @@ public class LogBookController : ControllerBase
 
     [HttpPost]
     [ProducesResponseType<Envelope<LogBook>>(StatusCodes.Status201Created)]
-    public async Task<IActionResult> Create(
+    public async Task<IActionResult> Post(
         [FromBody] CreateLogBook.Dto dto,
         CancellationToken cancellationToken
     )
@@ -64,5 +64,34 @@ public class LogBookController : ControllerBase
             .RunAsync(dto, cancellationToken);
 
         return Created(uri: (string)null, new Envelope<LogBook>(created));
+    }
+
+    [HttpPut("{id}")]
+    [ProducesResponseType<Envelope<LogBook>>(StatusCodes.Status200OK)]
+    public async Task<IActionResult> Put(
+        int id,
+        [FromBody] CreateLogBook.Dto dto,
+        CancellationToken cancellationToken
+    )
+    {
+        var result = await _services
+            .GetRequiredService<UpdateLogBook>()
+            .RunAsync(id, dto, cancellationToken);
+
+        return Ok(new Envelope<LogBook>(result));
+    }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> Delete(
+    [FromRoute] int id,
+    CancellationToken cancellationToken
+    )
+    {
+        await _services
+            .GetRequiredService<DeleteLogBook>()
+            .RunAsync(id, cancellationToken);
+
+        return Ok();
     }
 }

@@ -17,4 +17,10 @@ public interface IRepository<TModel> where TModel : IModel
     Task<IEnumerable<TResult>> RunAsync<TResult>(IQueryable<TResult> query, CancellationToken cancellationToken);
 
     Task<IEnumerable<TResult>> RunAsync<TResult>(Func<IQueryable<TModel>, IQueryable<TResult>> query, CancellationToken cancellationToken);
+
+    Task<TModel> UpdateAsync(int id, Action<TModel> model, CancellationToken cancellationToken);
+
+    Task DeleteAsync(int id, CancellationToken cancellationToken);
+
+    void Delete(TModel model);
 }

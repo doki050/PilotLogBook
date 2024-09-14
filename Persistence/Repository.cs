@@ -33,4 +33,22 @@ public class Repository<TModel> : IRepository<TModel> where TModel : ModelBase
 
     public async Task<IEnumerable<TResult>> RunAsync<TResult>(Func<IQueryable<TModel>, IQueryable<TResult>> query, CancellationToken cancellationToken)
         => query(_dbSet.Local.AsQueryable()).ToArray().Concat(await query(_query).ToArrayAsync(cancellationToken));
+
+    public async Task<TModel> UpdateAsync(int id, Action<TModel> update, CancellationToken cancellationToken)
+    {
+        // AsTracking is required to load collection navigation properties and overwrite them on save
+        // instead of augmenting them, and simply adding to the collection
+        var model = await _query.AsTracking().FirstOrDefaultAsync(m => m.Id == id, cancellationToken);
+        update(model);
+        return model;
+    }
+
+    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
+    {
+        TModel model = await GetAsync(id, cancellationToken);
+        Delete(model);
+    }
+
+    public async void Delete(TModel model)
+        => _dbSet.Remove(model);
 }

@@ -16,6 +16,8 @@ public static class ModuleInit
             .AddScoped<CreateLogBook>()
             .AddScoped<GetLogBook>()
             .AddScoped<GetLogBooks>()
+            .AddScoped<UpdateLogBook>()
+            .AddScoped<DeleteLogBook>()
             ;
     }
 }

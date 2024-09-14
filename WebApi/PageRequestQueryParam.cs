@@ -22,11 +22,9 @@ public class PageRequestQueryParam
     public void ThrowIfInvalid(PageRequestQueryParam param)
     {
         if (param.Page < 1)
-            throw new DataValidationException()
-                .SetData("page", param.Page);
+            throw new DataValidationException();
 
         if (param.Limit < 1)
-            throw new DataValidationException()
-                .SetData("limit", param.Limit);
+            throw new DataValidationException();
     }
 }
