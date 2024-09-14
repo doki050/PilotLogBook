@@ -13,6 +13,7 @@ namespace Client
 
             // Enable routing and map the controller routes
             app.UseRouting();
+            app.UseStaticFiles(); // To serve static files from wwwroot
 
             app.MapControllers(); // Use the controller we created
 
