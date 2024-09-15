@@ -11,4 +11,12 @@
     } else {
         console.error('First name or last name not found in localStorage');
     }
+
+    // Logout button functionality
+    $('#logout-button').click(function () {
+        localStorage.removeItem('token'); // Clear the token
+        localStorage.removeItem('firstName'); // Clear user info
+        localStorage.removeItem('lastName');
+        window.location.href = "landing.html"; // Redirect to login page
+    });
 });

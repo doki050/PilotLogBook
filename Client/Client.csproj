@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier2022" Version="2.9.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="wwwroot\img\aviation.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

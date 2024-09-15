@@ -67,3 +67,14 @@ body {
     text-align: center;
     width: 100%;
 }
+
+
+#logout-button {
+    background-color: red !important; /* Force red background */
+    color: white !important; /* White text */
+    border: none;
+}
+
+    #logout-button:hover {
+        background-color: darkred !important; /* Darker red on hover */
+    }

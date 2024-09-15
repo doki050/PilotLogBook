@@ -1,0 +1,119 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/create.min.css",
+    "inputFiles": [
+      "wwwroot/css/create.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/index.min.css",
+    "inputFiles": [
+      "wwwroot/css/index.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/landing.min.css",
+    "inputFiles": [
+      "wwwroot/css/landing.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/list.min.css",
+    "inputFiles": [
+      "wwwroot/css/list.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/login.min.css",
+    "inputFiles": [
+      "wwwroot/css/login.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/register.min.css",
+    "inputFiles": [
+      "wwwroot/css/register.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/styles.min.css",
+    "inputFiles": [
+      "wwwroot/css/styles.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/auth.min.js",
+    "inputFiles": [
+      "wwwroot/js/auth.js"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/create.min.js",
+    "inputFiles": [
+      "wwwroot/js/create.js"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/index.min.js",
+    "inputFiles": [
+      "wwwroot/js/index.js"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/landing.min.js",
+    "inputFiles": [
+      "wwwroot/js/landing.js"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/list.min.js",
+    "inputFiles": [
+      "wwwroot/js/list.js"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/register.min.js",
+    "inputFiles": [
+      "wwwroot/js/register.js"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  }
+]

@@ -2,7 +2,35 @@
     font-family: Arial, sans-serif;
     margin: 20px;
     padding: 0;
+    background-image: url('/img/index.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the background image */
+    background-attachment: fixed; /* Ensures the background stays fixed when scrolling */
 }
+
+.container {
+    max-width: 1200px; /* Limit the width on large screens */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background (50% opacity) */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow for depth */
+}
+
+button.toggle-content {
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Padding inside the button */
+    font-size: 14px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+    button.toggle-content:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
 
 h1 {
     color: #333;
@@ -10,11 +38,12 @@ h1 {
     margin-bottom: 20px;
 }
 
-.container {
-    max-width: 1200px; /* Limit the width on large screens */
-    margin: 0 auto; /* Center the container */
-    padding: 20px;
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
 
 /* Style for the button */
 button.button {
@@ -65,8 +94,3 @@ button.button {
     .logbook-content.active {
         display: block;
     }
-
-/* Style for the toggle button */
-button.toggle-content {
-    font-size: 14px;
-    backg
