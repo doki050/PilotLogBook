@@ -1,0 +1,72 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1200px; /* Limit the width on large screens */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+}
+
+/* Style for the button */
+button.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+    button.button:hover {
+        background-color: #0056b3;
+        cursor: pointer;
+    }
+
+/* Collapsible rows styling for both desktop and mobile */
+.logbook-row {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.logbook-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.logbook-content {
+    display: none;
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+    .logbook-content.active {
+        display: block;
+    }
+
+/* Style for the toggle button */
+button.toggle-content {
+    font-size: 14px;
+    backg

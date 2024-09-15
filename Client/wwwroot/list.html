@@ -3,141 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All LogBooks</title>
+    <title>Pilóta Napló Bejegyzések</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/auth.js"></script> <!-- Include the authentication check -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        a {
-            display: block;
-            margin-top: 20px;
-            font-size: 18px;
-            text-decoration: none;
-            color: #007BFF;
-        }
-
-            a:hover {
-                text-decoration: underline;
-            }
-    </style>
+    <script src="js/auth.js"></script>
+    <link rel="stylesheet" href="css/list.css">
 </head>
 <body>
-    <h1>All LogBooks</h1>
-    <table id="logbookTable">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Departure</th>
-                <th>Departure Time</th>
-                <th>Arrival</th>
-                <th>Arrival Time</th>
-                <th>Airplane Type</th>
-                <th>Call Sign</th>
-                <th>Total Flight Time</th>
-                <th>Pilot Name</th>
-                <th>VFR Takeoff</th>
-                <th>VFR Landing</th>
-                <th>Night Takeoff</th>
-                <th>Night Landing</th>
-                <th>PIC Time</th>
-                <th>Dual Time</th>
-                <th>Instructor Time</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="container">
+        <h1>Pilóta Napló Bejegyzések</h1>
+        <button class="button" onclick="window.location.href='create.html'">Új bejegyzés</button>
 
-    <a href="create.html">Create a New LogBook Entry</a>
+        <!-- Collapsible rows for all views (desktop and mobile) -->
+        <div id="logbookContainer"></div>
+    </div>
 
-    <script>
-        $(document).ready(function () {
-            // Get the token from localStorage
-            const token = localStorage.getItem('token');
-
-            if (!token) {
-                // If no token, redirect to login page
-                alert('You need to log in to view logbook entries.');
-                window.location.href = "landing.html";
-                return;
-            }
-
-            // Fetch all LogBooks using an AJAX GET request
-            $.ajax({
-                url: 'https://localhost:5000/api/logbook', // Adjust to match your API URL
-                type: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + token  // Include the token in the Authorization header
-                },
-                success: function (response) {
-                    let logbookTableBody = '';
-
-                    const logbooks = response.content; // Use 'content' based on your actual response structure
-
-                    // Loop through the logbooks and create rows for each logbook
-                    logbooks.forEach(function (logbook) {
-                        logbookTableBody += `
-                                    <tr>
-                                        <td>${logbook.date}</td>
-                                        <td>${logbook.departure}</td>
-                                        <td>${logbook.departureTime}</td>
-                                        <td>${logbook.arrival}</td>
-                                        <td>${logbook.arrivalTime}</td>
-                                        <td>${logbook.airplaneType}</td>
-                                        <td>${logbook.callSign}</td>
-                                        <td>${logbook.totalFlightTime}</td>
-                                        <td>${logbook.pilotName}</td>
-                                        <td>${logbook.vfrTakeoff}</td>
-                                        <td>${logbook.vfrLanding}</td>
-                                        <td>${logbook.nightTakeoff}</td>
-                                        <td>${logbook.nightLanding}</td>
-                                        <td>${logbook.picTime}</td>
-                                        <td>${logbook.dualTime}</td>
-                                        <td>${logbook.instructorTime}</td>
-                                        <td>${logbook.description}</td>
-                                    </tr>
-                                `;
-                    });
-
-                    // Append the rows to the table body
-                    $('#logbookTable tbody').html(logbookTableBody);
-                },
-                error: function (error) {
-                    alert('Error fetching logbook entries: ' + error.responseText);
-                }
-            });
-        });
-    </script>
+    <script src="js/list.js" defer></script>
 </body>
 </html>
