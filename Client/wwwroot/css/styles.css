@@ -1,0 +1,111 @@
+﻿/* Global Styles - Apply these styles to all pages */
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Slight transparency */
+    z-index: 1;
+}
+
+body > * {
+    position: relative;
+    z-index: 2;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #343a40;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent background for the container */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid rgba(255, 255, 255, 0.8); /* White border */
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff; /* White text for the title */
+}
+
+label {
+    color: #ffffff; /* White text for labels */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px; /* Space between label and input field */
+}
+
+input {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff; /* White bold border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+    input:focus, input:active {
+        color: #ffffff !important;
+    }
+
+    input::placeholder {
+        color: #ffffff;
+        opacity: 0.7;
+    }
+
+    input:focus {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+button {
+    background-color: #007bff !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #0056b3 !important;
+        border-color: #ffffff;
+    }
+
+@media (min-width: 992px) {
+    .container {
+        width: 400px;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        width: 100%;
+    }
+}

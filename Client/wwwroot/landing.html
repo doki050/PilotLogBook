@@ -4,63 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        button {
-            background-color: #007BFF;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            margin: 20px;
-        }
-
-            button:hover {
-                background-color: #0056b3;
-            }
-    </style>
+    <link rel="stylesheet" href="lib/twitter-bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/landing.css">
 </head>
 <body>
-    <h1>Welcome to the Pilot LogBook Application</h1>
+
     <div class="container">
-        <button id="goToRegister">Register</button>
-        <button id="goToLogin">Login</button>
+        <h1 class="display-3 display-md-4">Pilot LogBook</h1>
+
+        <div class="button-container mt-4">
+            <button id="goToRegister" class="btn btn-success mb-3">Regisztráció</button>
+            <button id="goToLogin" class="btn btn-primary">Bejelentkezés</button>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Check if user is already logged in (token exists)
-            const token = localStorage.getItem('token');
-            if (token) {
-                // If token exists, redirect to index.html
-                window.location.href = "index.html";
-            }
-
-            // Navigate to the Register page
-            $('#goToRegister').click(function () {
-                window.location.href = 'register.html';
-            });
-
-            // Navigate to the Login page
-            $('#goToLogin').click(function () {
-                window.location.href = 'login.html';
-            });
-        });
-    </script>
+    <script src="lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/landing.js"></script>
 </body>
 </html>

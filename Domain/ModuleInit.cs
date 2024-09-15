@@ -1,5 +1,5 @@
-﻿using Domain.UseCases.LogBooks;
-using Microsoft.Extensions.Configuration;
+﻿using Domain.Services;
+using Domain.UseCases.LogBooks;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -13,6 +13,7 @@ public static class ModuleInit
     {
         return services
             .AddAutoMapper([Assembly.GetExecutingAssembly()], ServiceLifetime.Singleton)
+            .AddScoped<UserService>()
             .AddScoped<CreateLogBook>()
             .AddScoped<GetLogBook>()
             .AddScoped<GetLogBooks>()

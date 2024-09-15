@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class Auth : Migration
+    public partial class ResetDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -158,6 +158,42 @@ namespace Persistence.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "LogBooks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Date = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    Departure = table.Column<string>(type: "TEXT", nullable: false),
+                    DepartureTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    Arrival = table.Column<string>(type: "TEXT", nullable: false),
+                    ArrivalTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    AirplaneType = table.Column<string>(type: "TEXT", nullable: false),
+                    CallSign = table.Column<string>(type: "TEXT", nullable: false),
+                    TotalFlightTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    PilotName = table.Column<string>(type: "TEXT", nullable: false),
+                    VfrTakeoff = table.Column<int>(type: "INTEGER", nullable: false),
+                    VfrLanding = table.Column<int>(type: "INTEGER", nullable: false),
+                    NightTakeoff = table.Column<int>(type: "INTEGER", nullable: false),
+                    NightLanding = table.Column<int>(type: "INTEGER", nullable: false),
+                    PicTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    DualTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    InstructorTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LogBooks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LogBooks_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -194,6 +230,11 @@ namespace Persistence.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LogBooks_UserId",
+                table: "LogBooks",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -213,6 +254,9 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "LogBooks");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -4,6 +4,7 @@ using Domain.UseCases.Messaging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
+using System.Security.Claims;
 using WebApi.RequestDtos;
 
 namespace WebApi.Controllers;
@@ -44,11 +45,13 @@ public class LogBookController : ControllerBase
     )
     {
         pageRequestParam.ThrowIfInvalid(pageRequestParam);
+        var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
         var result = await _services
             .GetRequiredService<GetLogBooks>()
             .RunAsync(
                 pageRequestParam.ToDomainObject(),
+                userName,
                 cancellationToken
             );
 
@@ -62,9 +65,11 @@ public class LogBookController : ControllerBase
         CancellationToken cancellationToken
     )
     {
+        var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
         var created = await _services
             .GetRequiredService<CreateLogBook>()
-            .RunAsync(dto, cancellationToken);
+            .RunAsync(dto, userName, cancellationToken);
 
         return Created(uri: null as string, new Envelope<LogBook>(created));
     }

@@ -56,7 +56,13 @@ namespace WebApi.Controllers
 
             var token = _authService.GenerateJwtToken(user);
 
-            return Ok(new { token });
+            return Ok(new
+            {
+                token = token,
+                username = user.UserName,
+                firstName = user.FirstName,  // Ensure first name is returned
+                lastName = user.LastName     // Ensure last name is returned
+            });
         }
     }
 }

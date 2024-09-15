@@ -1,0 +1,92 @@
+﻿body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+body > * {
+    position: relative;
+    z-index: 2;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/img/aviation.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #343a40;
+}
+
+.btn-primary {
+    background-color: #003366;
+    border-color: #003366;
+    color: white;
+    font-weight: bold;
+    font-size: x-large
+}
+
+.btn-success {
+    font-size: x-large
+}
+
+.btn-outline-primary {
+    color: white;
+    border-color: white;
+    font-weight: bold;
+}
+
+.btn-primary:hover,
+.btn-outline-primary:hover {
+    background-color: #00264d;
+    border-color: #00264d;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+input {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #343a40;
+    border: 1px solid #003366;
+    padding: 10px;
+}
+
+@media (min-width: 992px) {
+    .button-container {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .button-container button {
+        width: 60%;
+        margin-bottom: 10px;
+        padding: 25px 0;
+    }
+}
+
+@media (max-width: 991px) {
+    .button-container {
+        width: 100%;
+    }
+
+    .button-container button {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 20px 0;
+    }
+}

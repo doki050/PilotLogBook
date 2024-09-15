@@ -4,47 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pilot LogBook</title>
-    <script src="js/auth.js"></script> <!-- Include the authentication check -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-        }
-
-        a {
-            text-decoration: none;
-            font-size: 20px;
-            color: #007BFF;
-            display: block;
-            margin: 20px 0;
-        }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
-        h1 {
-            color: #333;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/auth.js"></script>
 </head>
 <body>
-    <h1>Pilot LogBook Application</h1>
-    <p>Welcome to the Pilot LogBook app! You can either view all LogBooks or create a new LogBook entry.</p>
+    <div class="username">&#9992; <span id="user-name"></span></div>
 
-    <a href="list.html">View All LogBooks</a>
-    <a href="create.html">Create a New LogBook</a>
+    <div class="content">
+        <h1>Pilóta Napló</h1>
+
+        <div class="links">
+            <a href="list.html">Bejegyzések megtekintése</a>
+            <a href="create.html">Bejegyzés létrehozása</a>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
 </body>
 </html>
-
-<script>
-    $(document).ready(function () {
-        const token = localStorage.getItem('token');
-
-        if (!token) {
-            // Redirect to the login page if no token is found
-            alert('You need to log in to access this page.');
-            window.location.href = "landing.html";
-        }
-    });
-</script>

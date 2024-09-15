@@ -10,13 +10,18 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>, IUnitOfWork
 {
     public DbSet<LogBook> LogBooks { get; set; }
 
-    public AppDbContext(DbContextOptions<AppDbContext> options) 
+    public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<LogBook>()
+            .HasOne(logbook => logbook.User)
+            .WithMany()
+            .HasForeignKey(lb => lb.UserId);
     }
 
     async Task<int> IUnitOfWork.SaveChangesAsync(CancellationToken cancellationToken)

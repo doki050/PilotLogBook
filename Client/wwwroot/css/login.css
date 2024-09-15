@@ -1,0 +1,110 @@
+﻿body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Slight transparency */
+    z-index: 1;
+}
+
+body > * {
+    position: relative;
+    z-index: 2;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/img/aviation.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #343a40;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent background for the container */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid rgba(255, 255, 255, 0.8); /* White border */
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff; /* White text for the title */
+}
+
+/* Form labels */
+label {
+    color: #ffffff; /* White text for labels */
+    font-weight: bold; /* Bold labels for better visibility */
+    display: block;
+    margin-bottom: 10px; /* Space between label and input field */
+}
+
+input {
+    background-color: transparent !important; /* Force transparent background */
+    color: #ffffff !important; /* Force white text inside input fields */
+    border: 2px solid #ffffff; /* White bold border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px; /* Rounded corners for inputs */
+    font-weight: bold; /* Bold text inside input fields */
+}
+
+    /* Ensures input text remains white on focus */
+    input:focus, input:active {
+        color: #ffffff !important; /* Force white text inside input fields on focus */
+    }
+
+    input::placeholder {
+        color: #ffffff; /* White placeholder text */
+        opacity: 0.7; /* Slightly transparent placeholder text */
+    }
+
+    input:focus {
+        background-color: transparent !important; /* Ensure transparency on focus */
+        box-shadow: none !important; /* Remove browser-specific focus shadow */
+        outline: none !important; /* Remove outline on focus */
+    }
+
+/* Button styling */
+button {
+    background-color: #007bff !important; /* Blue background color */
+    color: #ffffff !important; /* White text */
+    border: 2px solid #ffffff; /* White bold border */
+    padding: 10px;
+    margin-top: 20px; /* Add space between password input and button */
+    border-radius: 10px; /* Rounded corners to match input fields */
+    font-weight: bold;
+    width: 100%; /* Ensures button takes full width */
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #0056b3 !important; /* Darker blue on hover */
+        border-color: #ffffff;
+    }
+
+@media (min-width: 992px) {
+    .container {
+        width: 400px;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        width: 100%;
+    }
+}

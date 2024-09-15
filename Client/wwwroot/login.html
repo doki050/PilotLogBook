@@ -4,61 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        form {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-            button:hover {
-                background-color: #218838;
-            }
-    </style>
+    <link rel="stylesheet" href="css/login.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-    <h1>Login</h1>
+    <div class="container">
+        <h1>Bejelentkezés</h1>
 
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <form id="loginForm">
+            <label for="username">Felhasználónév</label>
+            <input type="text" id="username" name="username" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+            <label for="password">Jelszó</label>
+            <input type="password" id="password" name="password" required>
 
-        <button type="submit">Login</button>
-    </form>
+            <button type="submit">Bejelentkezés</button>
+        </form>
 
-    <p id="loginAlert" style="color: red;"></p>
+        <p id="loginAlert" style="color: red;"></p>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -75,7 +39,16 @@
                 contentType: 'application/json',
                 data: JSON.stringify(loginData),
                 success: function (response) {
-                    localStorage.setItem('token', response.token);  // Store JWT in localStorage
+                    console.log('Login response:', response);
+
+                    if (response.firstName && response.lastName) {
+                        localStorage.setItem('token', response.token);  // Store JWT in localStorage
+                        localStorage.setItem('firstName', response.firstName);  // Store first name in localStorage
+                        localStorage.setItem('lastName', response.lastName);  // Store last name in localStorage
+                    } else {
+                        console.error('First name or last name missing from the login response');
+                    }
+
                     $('#loginAlert').text('Login successful! Redirecting...').css('color', 'green');
                     setTimeout(() => window.location.href = 'index.html', 2000);  // Redirect to index.html after 2 seconds
                 },

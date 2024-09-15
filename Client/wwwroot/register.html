@@ -4,97 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        form {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-            button:hover {
-                background-color: #218838;
-            }
-    </style>
+    <link rel="stylesheet" href="lib/twitter-bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Register</h1>
+    <div class="container mt-5">
+        <h1 class="display-4">Regisztráció</h1>
 
-    <form id="registerForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <form id="registerForm" class="mt-4">
+            <div class="form-group">
+                <label for="username">Felhasználó név</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+            <div class="form-group">
+                <label for="password">Jelszó</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
 
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required>
+            <div class="form-group">
+                <label for="firstName">Keresztnév</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" required>
+            </div>
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required>
+            <div class="form-group">
+                <label for="lastName">Vezetéknév</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" required>
+            </div>
 
-        <button type="submit">Register</button>
-    </form>
+            <button type="submit" class="btn btn-success">Regisztráció</button>
+        </form>
 
-    <p id="registerAlert" style="color: red;"></p>
+        <p id="registerAlert" class="text-danger mt-3"></p>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $('#registerForm').submit(function (event) {
-            event.preventDefault();
-            const userData = {
-                username: $('#username').val(),
-                email: $('#email').val(),
-                password: $('#password').val(),
-                firstName: $('#firstName').val(),
-                lastName: $('#lastName').val()
-            };
-
-            $.ajax({
-                url: 'https://localhost:5000/api/auth/register',  // Adjust to match your API URL
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(userData),
-                success: function (response) {
-                    $('#registerAlert').text('User registered successfully! Redirecting to login...').css('color', 'green');
-                    setTimeout(() => window.location.href = 'login.html', 2000);  // Redirect to login after 2 seconds
-                },
-                error: function (error) {
-                    $('#registerAlert').text('Error during registration: ' + error.responseText);
-                }
-            });
-        });
-    </script>
+    <script src="lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/register.js"></script>
 </body>
 </html>

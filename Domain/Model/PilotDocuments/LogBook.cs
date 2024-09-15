@@ -1,4 +1,6 @@
-﻿namespace Domain.Model.PilotDocuments;
+﻿using Auth.Models;
+
+namespace Domain.Model.PilotDocuments;
 
 public class LogBook : ModelBase
 {
@@ -19,4 +21,8 @@ public class LogBook : ModelBase
     public TimeOnly DualTime { get; set; }
     public TimeOnly InstructorTime { get; set; }
     public string Description { get; set; } = string.Empty;
+
+    // New fields to link the LogBook to a specific user
+    public string UserId { get; set; }  // Foreign key
+    public ApplicationUser User { get; set; }  // Navigation property
 }
