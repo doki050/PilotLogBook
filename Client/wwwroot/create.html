@@ -4,160 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create LogBook</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/auth.js"></script> <!-- Include the authentication check -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        form {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-            button:hover {
-                background-color: #218838;
-            }
-    </style>
+    <link rel="stylesheet" href="css/create.css">
 </head>
 <body>
-    <h1>Create a New LogBook Entry</h1>
+    <div class="container">
+        <h1>Naplóbejegyzés felvétele</h1>
 
-    <form id="logbookForm">
-        <!-- Fields for logbook creation -->
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required>
+        <form id="logbookForm">
+            <label for="date">Dátum</label>
+            <input type="date" id="date" name="date" required>
 
-        <label for="departure">Departure:</label>
-        <input type="text" id="departure" name="departure" required>
+            <label for="departure">Indulás - Hely</label>
+            <input type="text" id="departure" name="departure" required>
 
-        <label for="departureTime">Departure Time:</label>
-        <input type="time" id="departureTime" name="departureTime" required>
+            <label for="departureTime">Indulás - Idő</label>
+            <input type="time" id="departureTime" name="departureTime" required>
 
-        <label for="arrival">Arrival:</label>
-        <input type="text" id="arrival" name="arrival" required>
+            <label for="arrival">Érkezés - Hely</label>
+            <input type="text" id="arrival" name="arrival" required>
 
-        <label for="arrivalTime">Arrival Time:</label>
-        <input type="time" id="arrivalTime" name="arrivalTime" required>
+            <label for="arrivalTime">Érkezés - Idő</label>
+            <input type="time" id="arrivalTime" name="arrivalTime" required>
 
-        <label for="airplaneType">Airplane Type:</label>
-        <input type="text" id="airplaneType" name="airplaneType" required>
+            <label for="airplaneType">Repülőeszköz - Gyártmány/Típus/Változat</label>
+            <input type="text" id="airplaneType" name="airplaneType" required>
 
-        <label for="callSign">Call Sign:</label>
-        <input type="text" id="callSign" name="callSign" required>
+            <label for="callSign">Repülőeszköz - Azonosító</label>
+            <input type="text" id="callSign" name="callSign" required>
 
-        <label for="totalFlightTime">Total Flight Time:</label>
-        <input type="text" id="totalFlightTime" name="totalFlightTime" required>
+            <label for="totalFlightTime">Teljes Repült Idő (óra/perc)</label>
+            <input type="text" id="totalFlightTime" name="totalFlightTime" required>
 
-        <label for="pilotName">Pilot Name:</label>
-        <input type="text" id="pilotName" name="pilotName" required>
+            <label for="pilotName">Pilóta neve - PIC</label>
+            <input type="text" id="pilotName" name="pilotName" required>
 
-        <label for="vfrTakeoff">VFR Takeoff:</label>
-        <input type="number" id="vfrTakeoff" name="vfrTakeoff" required>
+            <label for="vfrTakeoff">Felszállás - VFR</label>
+            <input type="number" id="vfrTakeoff" name="vfrTakeoff" required>
 
-        <label for="vfrLanding">VFR Landing:</label>
-        <input type="number" id="vfrLanding" name="vfrLanding" required>
+            <label for="nightTakeoff">Felszállás - Éjjel</label>
+            <input type="number" id="nightTakeoff" name="nightTakeoff">
 
-        <label for="nightTakeoff">Night Takeoff:</label>
-        <input type="number" id="nightTakeoff" name="nightTakeoff">
+            <label for="vfrLanding">Leszállás - VRF</label>
+            <input type="number" id="vfrLanding" name="vfrLanding" required>
 
-        <label for="nightLanding">Night Landing:</label>
-        <input type="number" id="nightLanding" name="nightLanding">
+            <label for="nightLanding">Leszállás - Éjjel</label>
+            <input type="number" id="nightLanding" name="nightLanding">
 
-        <label for="picTime">PIC Time:</label>
-        <input type="text" id="picTime" name="picTime" required>
+            <label for="picTime">Adott pilóta funkcióban eltöltött idő: Parancsnok PIC</label>
+            <input type="text" id="picTime" name="picTime" required>
 
-        <label for="dualTime">Dual Time:</label>
-        <input type="text" id="dualTime" name="dualTime">
+            <label for="dualTime">Adott pilóta funkcióban eltöltött idő: Kétkormányios DUAL</label>
+            <input type="text" id="dualTime" name="dualTime">
 
-        <label for="instructorTime">Instructor Time:</label>
-        <input type="text" id="instructorTime" name="instructorTime">
+            <label for="instructorTime">Adott pilóta funkcióban eltöltött idő: Oktató</label>
+            <input type="text" id="instructorTime" name="instructorTime">
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea>
+            <label for="description">Megjegyzés</label>
+            <textarea id="description" name="description"></textarea>
 
-        <button type="submit">Create LogBook Entry</button>
-    </form>
+            <button type="submit">Létrehozás</button>
+        </form>
+    </div>
 
-    <script>
-        $(document).ready(function () {
-            // Ensure the user is authenticated
-            const token = localStorage.getItem('token');
-            if (!token) {
-                alert('You need to log in to access this page.');
-                window.location.href = 'landing.html';
-                return;
-            }
-
-            $('#logbookForm').submit(function (event) {
-                event.preventDefault();
-
-                const logbookData = {
-                    date: $('#date').val(),
-                    departure: $('#departure').val(),
-                    departureTime: $('#departureTime').val(),
-                    arrival: $('#arrival').val(),
-                    arrivalTime: $('#arrivalTime').val(),
-                    airplaneType: $('#airplaneType').val(),
-                    callSign: $('#callSign').val(),
-                    totalFlightTime: $('#totalFlightTime').val(),
-                    pilotName: $('#pilotName').val(),
-                    vfrTakeoff: parseInt($('#vfrTakeoff').val()),
-                    vfrLanding: parseInt($('#vfrLanding').val()),
-                    nightTakeoff: parseInt($('#nightTakeoff').val() || 0),
-                    nightLanding: parseInt($('#nightLanding').val() || 0),
-                    picTime: $('#picTime').val(),
-                    dualTime: $('#dualTime').val() || "00:00",
-                    instructorTime: $('#instructorTime').val() || "00:00",
-                    description: $('#description').val()
-                };
-
-                // AJAX call to POST the logbook entry
-                $.ajax({
-                    url: 'https://localhost:5000/api/logbook', // Adjust the API URL
-                    type: 'POST',
-                    contentType: 'application/json',
-                    headers: {
-                        'Authorization': 'Bearer ' + token // Include the JWT token
-                    },
-                    data: JSON.stringify(logbookData),
-                    success: function (response) {
-                        alert('LogBook entry created successfully!');
-                        window.location.href = 'list.html'; // Redirect to the list page
-                    },
-                    error: function (error) {
-                        alert('Error creating logbook entry: ' + error.responseText);
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="js/create.js" defer></script>
 </body>
 </html>
