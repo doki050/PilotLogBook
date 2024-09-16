@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Net.Mime;
+
 namespace Client
 {
     public class Program
@@ -6,16 +9,22 @@ namespace Client
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container
             builder.Services.AddControllers();
 
             var app = builder.Build();
 
-            // Enable routing and map the controller routes
             app.UseRouting();
-            app.UseStaticFiles(); // To serve static files from wwwroot
+            app.UseStaticFiles();
 
-            app.MapControllers(); // Use the controller we created
+            app.MapControllers();
+
+            app.MapGet("/", async context =>
+            {
+                var filePath = "wwwroot/landing.html";
+                var html = await File.ReadAllTextAsync(filePath);
+                context.Response.ContentType = MediaTypeNames.Text.Html;
+                await context.Response.WriteAsync(html);
+            });
 
             app.Run();
         }
