@@ -1,11 +1,10 @@
-﻿/* Override specific styles for the index page */
-.username {
-    position: fixed; /* Keep the username fixed at the top */
+﻿.username {
+    position: fixed;
     top: 10px;
     left: 10px;
     font-size: 18px;
     color: #ffffff;
-    z-index: 1; /* Ensure it stays on top of the content */
+    z-index: 1;
 }
 
 h1 {
@@ -70,11 +69,11 @@ body {
 
 
 #logout-button {
-    background-color: red !important; /* Force red background */
-    color: white !important; /* White text */
+    background-color: red !important;
+    color: white !important;
     border: none;
 }
 
     #logout-button:hover {
-        background-color: darkred !important; /* Darker red on hover */
+        background-color: darkred !important;
     }

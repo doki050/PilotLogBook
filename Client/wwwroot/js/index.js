@@ -12,11 +12,10 @@
         console.error('First name or last name not found in localStorage');
     }
 
-    // Logout button functionality
     $('#logout-button').click(function () {
-        localStorage.removeItem('token'); // Clear the token
-        localStorage.removeItem('firstName'); // Clear user info
+        localStorage.removeItem('token');
+        localStorage.removeItem('firstName');
         localStorage.removeItem('lastName');
-        window.location.href = "landing.html"; // Redirect to login page
+        window.location.href = "landing.html";
     });
 });

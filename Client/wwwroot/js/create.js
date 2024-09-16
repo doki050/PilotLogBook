@@ -1,14 +1,13 @@
 ﻿$(document).ready(function () {
-    // Ensure the user is authenticated
     const token = localStorage.getItem('token');
     if (!token) {
         alert('You need to log in to access this page.');
-        window.location.href = 'landing.html'; // Redirect to login page
+        window.location.href = 'landing.html';
         return;
     }
 
     $('#logbookForm').submit(function (event) {
-        event.preventDefault(); // Prevent form from submitting the default way
+        event.preventDefault();
 
         const logbookData = {
             date: $('#date').val(),
@@ -30,18 +29,17 @@
             description: $('#description').val()
         };
 
-        // AJAX call to POST the logbook entry
         $.ajax({
-            url: 'https://localhost:5000/api/logbook', // Adjust the API URL as needed
+            url: 'https://localhost:5000/api/logbook',
             type: 'POST',
             contentType: 'application/json',
             headers: {
-                'Authorization': 'Bearer ' + token // Include the JWT token for authentication
+                'Authorization': 'Bearer ' + token
             },
             data: JSON.stringify(logbookData),
             success: function (response) {
                 alert('LogBook entry created successfully!');
-                window.location.href = 'list.html'; // Redirect to the list page after success
+                window.location.href = 'list.html';
             },
             error: function (error) {
                 alert('Error creating logbook entry: ' + error.responseText);

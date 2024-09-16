@@ -8,7 +8,7 @@
     }
 
     $.ajax({
-        url: 'https://localhost:5000/api/logbook', // Adjust to your API URL
+        url: 'https://localhost:5000/api/logbook',
         type: 'GET',
         headers: {
             'Authorization': 'Bearer ' + token
@@ -20,7 +20,6 @@
             logbooks.forEach(function (logbook, index) {
                 const collapsibleId = `logbookContent${index}`;
 
-                // Collapsible rows for all views (desktop and mobile)
                 logbookHtml += `
                     <div class="logbook-row">
                         <div class="logbook-header">
@@ -50,10 +49,8 @@
                 `;
             });
 
-            // Append collapsible rows to the container
             $('#logbookContainer').html(logbookHtml);
 
-            // Toggle content visibility on click
             $('.toggle-content').click(function () {
                 const targetId = $(this).data('target');
                 $(targetId).toggleClass('active');
