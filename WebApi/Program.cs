@@ -9,7 +9,6 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         var configuration = builder.Configuration;
 
-        // Register services using extension methods
         builder.Services.ConfigureServices(configuration);
         builder.Services.ConfigureControllers();
         builder.Services.AddEndpointsApiExplorer();
@@ -17,17 +16,17 @@ public class Program
 
         var app = builder.Build();
 
-        // Configure the middleware pipeline
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
         app.UseCors("AllowAllOrigins");
-        app.UseAuthentication();  // Make sure authentication is included
+        app.UseAuthentication();
         app.UseAuthorization();
+
+        app.MapGet("/api/health", () => Results.Ok("Application is running."));
 
         app.MapControllers();
         app.Run();

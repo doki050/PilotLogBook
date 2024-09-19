@@ -9,8 +9,9 @@
     };
 
     $.ajax({
-        url: 'https://localhost:5000/api/auth/register',
+        url: 'https://172.205.148.14:5000/api/auth/register',
         type: 'POST',
+        timeout: 60000,  // 60 seconds
         contentType: 'application/json',
         data: JSON.stringify(userData),
         success: function (response) {
