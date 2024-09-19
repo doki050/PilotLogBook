@@ -6,7 +6,7 @@
             };
 
             $.ajax({
-                url: 'https://172.205.148.14:5000/api/auth/login',
+                url: 'https://172.205.148.14/api/auth/login',
                 type: 'POST',
                 timeout: 60000,  // 60 seconds
                 contentType: 'application/json',

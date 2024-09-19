@@ -8,7 +8,7 @@
     }
 
     $.ajax({
-        url: 'https://172.205.148.14:5000/api/logbook',
+        url: 'https://172.205.148.14/api/logbook',
         type: 'GET',
         timeout: 60000,  // 60 seconds
         headers: {
