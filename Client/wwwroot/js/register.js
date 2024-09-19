@@ -9,7 +9,7 @@
     };
 
     $.ajax({
-        url: 'http://172.205.148.14/api/auth/register',
+        url: 'http://20.71.230.146/api/auth/register',
         type: 'POST',
         timeout: 60000,  // 60 seconds
         contentType: 'application/json',

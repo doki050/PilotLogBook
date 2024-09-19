@@ -30,7 +30,7 @@
         };
 
         $.ajax({
-            url: 'https://172.205.148.14/api/logbook',
+            url: 'https://20.71.230.146/api/logbook',
             timeout: 60000,  // 60 seconds
             type: 'POST',
             contentType: 'application/json',
