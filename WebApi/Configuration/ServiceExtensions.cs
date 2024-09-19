@@ -19,10 +19,13 @@ public static class ServiceExtensions
         // Add CORS policy
         services.AddCors(options =>
         {
-            options.AddPolicy("AllowAllOrigins",
-                builder => builder.AllowAnyOrigin()
-                                  .AllowAnyMethod()
-                                  .AllowAnyHeader());
+            options.AddPolicy("AllowSpecificOrigin", policyBuilder =>
+            {
+                policyBuilder
+                    .WithOrigins("https://logbookstorage.z6.web.core.windows.net")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
         });
 
         // Add Identity services

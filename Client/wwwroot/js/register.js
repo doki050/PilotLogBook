@@ -9,7 +9,7 @@
     };
 
     $.ajax({
-        url: 'https://172.205.148.14:5000/api/auth/register',
+        url: 'http://172.205.148.14/api/auth/register',
         type: 'POST',
         timeout: 60000,  // 60 seconds
         contentType: 'application/json',
@@ -20,7 +20,13 @@
             setTimeout(() => window.location.href = 'login.html', 2000);
         },
         error: function (error) {
-            $('#registerAlert').text('Error during registration: ' + error.responseText);
+            let errorMessage = 'An error occurred during registration.';
+            if (error.responseJSON && error.responseJSON.message) {
+                errorMessage = error.responseJSON.message;
+            } else if (error.responseText) {
+                errorMessage = error.responseText;
+            }
+            $('#registerAlert').text('Error during registration: ' + errorMessage);
         }
     });
 });

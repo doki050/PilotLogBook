@@ -18,7 +18,6 @@ public class Program
         builder.Logging.AddConsole();
         builder.Logging.SetMinimumLevel(LogLevel.Debug);
 
-
         var app = builder.Build();
 
         if (app.Environment.IsDevelopment())
@@ -27,12 +26,14 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseCors("AllowAllOrigins");
+        app.UseRouting();
+
+        app.UseCors("AllowSpecificOrigin");
         app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapGet("/api/health", () => Results.Ok("Application is running."));
-
+        
         app.MapControllers();
         app.Run();
     }
